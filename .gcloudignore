@@ -1,0 +1,7 @@
+.gcloudignore
+.git
+.gitignore
+
+openai-env
+node_modules
+#!include:.gitignore
