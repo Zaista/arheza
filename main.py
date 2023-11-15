@@ -1,6 +1,6 @@
 import os
 from dotenv import dotenv_values
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, Response
 from openai import OpenAI
 from google.cloud import secretmanager
 
@@ -24,9 +24,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/story', methods=['POST'])
-def get_story():
-    print("requesting story")
+def generate_output():
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo",
         messages=[
@@ -34,10 +32,18 @@ def get_story():
                                           "engaging adventures."},
             {"role": "user", "content": "Describe in up to 3 sentences a starting point for a hero going on a "
                                         "first quest."}
-        ]
+        ],
+        stream=True
     )
+    yield "data: \n\n".encode('utf-8')
+    for chunk in completion:
+        yield f"data: {chunk.choices[0].delta.content}\n\n".encode('utf-8')
 
-    return completion.choices[0].message.content
+
+@app.route('/story')
+def get_story():
+    print("requesting story")
+    return Response(generate_output(), content_type='text/event-stream', status=200)
 
 
 @app.route('/image', methods=['POST'])
