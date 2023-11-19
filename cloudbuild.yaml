@@ -1,14 +1,4 @@
 steps:
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    args:
-      - gcloud
-      - functions
-      - deploy
-      - python-http-function
-      - --gen2
-      - --region=europe-west3
-      - --source=.
-      - --trigger-http
-      - --runtime=python311
-      - --entry-point=hello_http
-      - --allow-unauthenticated
+  - name: "gcr.io/cloud-builders/gcloud"
+    args: ["app", "deploy"]
+timeout: "1600s"

@@ -1,4 +1,5 @@
 import os
+import json
 from dotenv import dotenv_values
 from flask import Flask, request, render_template, Response
 from openai import OpenAI
@@ -26,16 +27,18 @@ def index():
 
 def generate_output():
     completion = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4",
         messages=[
             {"role": "system", "content": "You are a fantasy world tale teller, skilled in crafting mysterious and "
-                                          "engaging adventures."},
-            {"role": "user", "content": "Describe in up to 3 sentences a starting point for a hero going on a "
-                                        "first quest."}
+                                          "engaging adventures. You allways start an answer with a "
+                                          "prompt tailored for DALL-E 3 which will generate an image for the story "
+                                          "that you are about to tell. Signal the end of the prompt with"
+                                          "end-of-image-prompt message. Then continue with the description part that "
+                                          "should be approximately 400 characters long."},
+            {"role": "user", "content": "Describe a starting point for a hero going on his first quest."}
         ],
         stream=True
     )
-    yield "data: \n\n".encode('utf-8')
     for chunk in completion:
         yield f"data: {chunk.choices[0].delta.content}\n\n".encode('utf-8')
 
@@ -56,7 +59,7 @@ def get_image():
     )
 
     image_url = image.data[0].url
-    return image_url
+    return json.dumps({'url': image_url})
 
 
 if __name__ == '__main__':

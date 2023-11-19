@@ -1,0 +1,10 @@
+#text {
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    text-shadow: 3px 3px 3px rgba(0, 0, 0, 1);
+    font-weight: bold;
+}
+
+#background {
+    background-image: url('background.jpg');
+}
