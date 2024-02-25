@@ -54,6 +54,7 @@ def get_image():
     print("requesting image")
     image = client.images.generate(
         prompt=request.get_json()["prompt"],
+        model="dall-e-3",
         size="1024x1024",
         n=1,
     )
