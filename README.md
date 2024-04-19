@@ -5,7 +5,7 @@ created by Reaktor Innovations and University of Helsinki, adjusted to fit the p
 
 Created out of passion for programming, AI, and creativity.
 
-Used as a final project for the Building AI course.
+Used as a final project for the Building AI course project.
 
 ## Summary
 
