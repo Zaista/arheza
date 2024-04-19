@@ -14,11 +14,11 @@ Arheza is the user-tailored ever-growing role-playing epic-fantasy world for gam
 
 ## Background
 
-Arheza is created for fun, to give users the opportunity to immerse themselves in the world of quests, advanture and magic, with a spin: users doing meaningful actions, such as quest completion, failures, eliminations, etc., would cause the baseline of the world to change. So if they, or any other players find themselves in the same situation, they will pick up where previous players left. As of the writing, we're not aware of any other plaform that supports this.
+Arheza is created for fun, to allow users to immerse themselves in the world of quests, adventure, and magic, with a spin: users doing meaningful actions, such as quest completion, failures, eliminations, etc., would cause the world baseline to update. So if they, or any other players find themselves in the same situation, they will pick up where previous players left. As of the writing, we are not aware of any other platform which supports this.
 
 This leaves us with the following:
 * Learn how to create a standard CYOA game using OpenAI
-* Figure out a way how to update the world baseline based on player's progress
+* Figure out a way how to update the world baseline based on the player's progress
 
 
 ## How is it used?
@@ -51,8 +51,8 @@ Baseline data for the world will be created by ourselves (with the help of the C
 
 ## Challenges
 
-* How to progresively update the world baseline, that it actually makes sense for the game and other players.
-* How to limit the harming content that players might maliciously add to the game.
+* How to progressively update the world baseline, so that it makes sense for the game and other players.
+* How to limit the harmful content that players might maliciously add to the game.
 
 ## What next?
 
